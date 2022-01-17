@@ -23,16 +23,33 @@ const circle = require('../src/circle');
   OBS: Lembre-se que você não precisa se preocupar com o describe e o it por enquanto, isso será aprendido posteriormente.
 */
 
+//Imar Santos me ajudou nesse requisito a entender melhor como chamar os Objetos.
 describe('4 - Implemente os casos de teste para a função `circle`', () => {
   it('Verifica se ao receber um raio, a função `circle` retorna um objeto contedos os valores esperados', () => {
-    fail('Teste vazio!');
     // ESCREVA SEUS TESTES ABAIXO:
     // Teste se circle retorna undefined, caso o parâmetro passado não seja um número.
-    // Teste se circle retorna um objeto.
-    // Teste se o objeto retornado tem 3 propriedades.
+    expect(circle(NaN)).toBeUndefined();
     // Teste se a função, quando não recebe nenhum parâmetro, retorna undefined.
+    expect(circle()).toBeUndefined();
+    // Teste se circle retorna um objeto.
+    expect(typeof circle(2) === 'object').toBeTruthy();
+    // Teste se o objeto retornado tem 3 propriedades.
+    expect(Object.keys(circle(3)).length === 3).toBeTruthy();
     // Teste se dentro do objeto retornado, a função retorna uma key com value igual a circunferência correta para um círculo de raio 2.
+    expect(circle(2)).toHaveProperty('circumference', 12.56);
     // Teste se dentro do objeto retornado, a função retorna uma key com value igual a área correta para um círculo de raio 3.
+    expect(circle(3)).toHaveProperty('area', 28.259999999999998);
     // Teste que a função retorna, num objeto, os dados corretos de um círculo de raio 3.
+    expect(circleReturn(circle(3))).toBeTruthy();
+    
   });
 });
+
+
+const circleReturn = (obj) => {
+  let objeto = obj;
+  if((objeto.radius === 3) && (objeto.area === 28.259999999999998) && (objeto.circumference === 18.84)) {
+    return true;
+  }
+  return false;
+}
