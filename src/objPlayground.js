@@ -45,7 +45,7 @@ const calculator = (number1, number2) => {
   return objeto;
 };
 
-//Imar Mendes me ajudou a entender o que estava pedindo nesse requisito
+// Imar Mendes me ajudou a entender o que estava pedindo nesse requisito
 const arrayGenerator = (type, object) => {
   if (type === 'keys') {
     return Object.keys(object);
